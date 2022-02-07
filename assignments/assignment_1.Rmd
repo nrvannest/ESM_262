@@ -1,0 +1,18 @@
+---
+title: "assignment_1"
+author: "Nikole Vannest"
+date: "2/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Assignment 1 - 2/7/2022
+
+**Why you are taking this course?**
+I'm taking this course because it is a prerequisite for the spring modeling course, and I just want to make sure there aren't any gaps in my knowledge of the basics. I also want a general refresher in base R and making loops.
+
+**Describe your data science background**
+I have a good amount of experience working in R, making visualizations, functions, loops and cleaning big data sets. I also have some experience in Python, C++, JavaScript and SQL. I'm comfortable with the basic functions in GitHub but don't know how to work branches, projects or some of the other options available. 
