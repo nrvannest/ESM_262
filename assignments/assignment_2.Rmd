@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Assignment 2
+# Assignment 2  
 
 ### Goal: Find top ten greatest changes in land use from 2020-2040 within the Tahoe Central Sierra region
 
