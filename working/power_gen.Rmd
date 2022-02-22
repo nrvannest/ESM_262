@@ -1,0 +1,52 @@
+---
+title: "Assignment_3"
+author: "Nikole Vannest"
+date: "2/14/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(tidyverse)
+```
+
+### Load in Automobile Power Generation Function
+
+**For 30 m/s**  
+```{r 30 m/s}
+source(here("working", 'power_gen_function.R'))
+
+a <- power_gen(m = 31752, V = 30, A = 16)
+```
+
+**For 80 km/hr**  
+```{r 80 km/hr}
+b <- power_gen(m = 31752, V = 22.22, A = 16)
+```
+
+**For 120 km/hr**
+```{r 120 km/hr}
+c <- power_gen(m = 31752, V = 33.33, A = 16)
+```
+
+**For 40 km/hr**
+```{r 40 km/hr}
+d <- power_gen(m = 31752, V = 11.11, A = 16)
+```
+
+**For 5 km/hr**
+```{r 40 km/hr}
+e <- power_gen(m = 31752, V = 1.389, A = 16)
+```
+
+**Plot**
+```{r compile and plot}
+power_df <- data.frame('power' = c(a, b, c, d, e),
+                       'speed' = c(30, 22.22, 33.33, 11.11, 1.389))
+
+power_df %>% ggplot(aes(x = speed)) +
+  geom_point(aes(y = power))
+```
+
+
