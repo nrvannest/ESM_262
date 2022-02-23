@@ -1,0 +1,54 @@
+---
+title: "Assignment_4"
+author: "Nikole Vannest & Hanna Weyland"
+date: "2/23/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(purrr)
+library(here)
+library(tidyverse)
+
+source(here("R", "ndvi_function.R"))
+```
+
+```{r create data}
+# NIR ranges between 0.7 and 1.4
+NIR_seq <- seq(from = 0.7, to = 1.4, by = 0.1)
+NIR <- sample(NIR_seq, size = 10, replace = T)
+# R ranges between 0 and 1
+R_seq <- seq(from = 0.05, to = 1.0, by = 0.12)
+R <- sample(R_seq, size = 5, replace = T)
+```
+
+```{r use pmap to loop}
+# Use pmap to loop R values through NIR values
+ndvi_values <- pmap(list(NIR), calc_ndvi, R = R)
+```
+
+```{r convert to dataframe}
+# Convert to dataframe
+ndvi_df <- as.data.frame(ndvi_values, col.names = NIR)
+
+# add R values as a column
+ndvi_df$R <- R
+```
+
+```{r pivot to long format}
+# pivot to long format
+ndvig <- ndvi_df %>% pivot_longer(!R, 
+                                  names_to = 'NIR',
+                                  values_to = 'NDVI')
+
+
+```
+
+```{r make a graph}
+ndvig %>% ggplot(aes(x = NDVI)) +
+  geom_point(aes(y = R)) +
+  theme_light() 
+```
+
