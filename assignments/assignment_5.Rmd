@@ -1,0 +1,25 @@
+---
+title: "Fish data"
+author: "Nikole Vannest"
+date: '2022-02-28'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+```
+
+### Load in data and functions
+
+```{r}
+source(here("R", "fish_function.R"))
+data <- read.table(here("data", "fish.txt"), header = T)
+```
+
+### Test function
+```{r}
+output <- fish(data)
+
+```
+
